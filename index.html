@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <style>
+            #trackingarea{
+                width:100%;
+                clear:both;
+                padding:30px;
+            }
+            .inner-tracking{
+                width:98%;
+                margin:0 auto;
+                text-align: center;
+              
+                
+            }
+            .inner-tracking-main{
+                text-align: center;
+                display: flex;
+               
+                
+               
+            }
+            .track-child{
+                background-color: cornflowerblue;
+                width:190px;
+                height:250px;
+               margin: 20px 20px 20px 3px;
+               padding: 40px;
+               border-radius: 10%;
+               
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="trackingarea">
+            <div class="inner-tracking">
+                <h2 class="health">How are you feeling?</h2>
+
+            </div>
+            <div class="inner-tracking-main">
+                <div class="track-child">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    <h5>Heart Rate</h5>
+                    <p><span class="counter"data-target="75">0</span></p>
+
+                </div>
+                <div class="track-child">
+                    <i class="fas fa-moon"></i>
+                    <h5>Steps</h5>
+                    <p><span class="counter"data-target="8">0</span></p>
+
+                </div>
+                <div class="track-child">
+                    <i class="fas fa-cocktail"></i>
+                    <h5>Heart Rate</h5>
+                    <p><span class="counter"data-target="10">0</span></p>
+
+                </div>
+                <div class="track-child">
+                    <i class="fas fa-walking"></i>
+                    <h5>Steps</h5>
+                    <p><span class="counter"data-target="11000">0</span></p>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <script>
+            //let counter=document.querySelector(".counter");
+
+           // let count=1;
+
+           // setInterval(()=>{
+            //    if(count<75){
+             //       count++;
+              //  counter.innerText=count;
+
+             //   }
+              
+           // },1);
+
+           let counters =document.querySelectorAll(".counter");
+           let time=300;
+          
+            counters.forEach(counter=>{
+              let updateCount=()=>{
+                  let target=+counter.getAttribute("data-target");
+                  let count=+counter.innerText;
+
+
+                  let increment=target/time;
+
+                  if(count<target){
+                      counter.innerText=Math.ceil(count+increment);
+                      setTimeout(updateCount,1)
+                  }
+                  else{
+                      count.innerText=target;
+                  }
+              };
+                   
+               updateCount();
+           });
+
+
+           let healthCondition =document.querySelector(".health");
+
+           setTimeout(()=>{
+               healthCondition.innerText="you are fit!!";
+
+
+           },3000)
+
+           
+        </script>
+    </body>
+</html>
